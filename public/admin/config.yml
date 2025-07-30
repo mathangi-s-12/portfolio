@@ -1,0 +1,162 @@
+backend:
+  name: github
+  repo: mathangi-s-12/portfolio
+  branch: add-decap
+
+publish_mode: editorial_workflow
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+media_library:
+  name: cloudinary
+  config:
+    multiple: false
+    cloud_name: dsdcxatjh
+    api_key: 427789495887798
+    folder: { folder: { path: "personal_portfolio" } }
+    default_transformations:
+      - - fetch_format: auto
+          quality: auto
+
+collections:
+  - name: "overview"
+    label: "Overview"
+    files:
+      - name: "about"
+        label: "About"
+        file: "src/decap-content/about/about.md"
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+
+          - label: "Role"
+            name: "role"
+            widget: "string"
+
+          - label: "About"
+            name: "about"
+            widget: "string"
+
+          - label: "Skills"
+            name: "skills"
+            widget: "list"
+            field: { name: "tech", label: "Tech", widget: "string" }
+
+          - label: "Website Logo"
+            name: "logo"
+            widget: "image"
+            allow_multiple: false
+            choose_url: false
+
+  - name: "contact_links"
+    label: "Contact links"
+    folder: "src/decap-content/contact-info"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+    fields:
+      - label: "Contact source"
+        name: "contact_source"
+        widget: "string"
+
+      - label: "Logo"
+        name: "logo"
+        widget: "image"
+
+      - label: "Link"
+        name: "link"
+        widget: "string"
+
+  - name: "skills"
+    label: "Skills"
+    folder: "src/decap-content/skills"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+    fields:
+      - name: "skill"
+        label: "Skill"
+        widget: "string"
+
+      - name: "type"
+        label: "Type - (FE/BE/Tools)"
+        widget: "string"
+
+      - name: "level"
+        label: "Skill level - (Beginner/Intermediate/Expert)"
+        widget: "string"
+
+      - name: "logo"
+        label: "Tech Logo"
+        widget: "string"
+
+  - name: "experience"
+    label: "Experience"
+    folder: "src/decap-content/experience"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+    fields:
+      - name: "company"
+        label: "Company name"
+        widget: "string"
+
+      - name: "from"
+        label: "Start date"
+        widget: "datetime"
+
+      - name: "to"
+        label: "End date"
+        widget: "datetime"
+
+      - name: "work_summary"
+        label: "Work summary"
+        widget: "markdown"
+        sanitize_preview: true
+        modes: ["rich_text"]
+
+      - name: "logo"
+        label: "Company Logo"
+        widget: "string"
+
+  - name: "projects"
+    label: "Projects"
+    folder: "src/decap-content/projects"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+    fields:
+      - name: "project"
+        label: "Project name"
+        widget: "string"
+
+      - name: "date_released"
+        label: "Date released"
+        widget: "datetime"
+
+      - name: "project_summary"
+        label: "Project summary"
+        widget: "markdown"
+        sanitize_preview: true
+        modes: ["rich_text"]
+
+      - name: "project_image"
+        label: "Project preview image"
+        widget: "image"
+
+      - name: "project_links"
+        label: "Project links"
+        widget: "list"
+        allow_add: true
+        fields:
+          - name: "github_link"
+            label: "Github link"
+            widget: "string"
+
+          - name: "website_link"
+            label: "Website link"
+            widget: "string"
+
+      - name: "project_tech"
+        label: "Project tech stack"
+        widget: "list"
+        allow_add: true
+        field: { name: "tech", label: "Tech", widget: "string" }
