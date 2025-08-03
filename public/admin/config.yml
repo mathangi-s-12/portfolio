@@ -3,6 +3,8 @@ backend:
   repo: mathangi-s-12/portfolio
   branch: add-decap
 
+# local_backend: true
+
 publish_mode: editorial_workflow
 
 media_folder: "public/uploads"
@@ -54,7 +56,7 @@ collections:
     label: "Contact links"
     folder: "src/decap-content/contact-info"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{contact_source}}"
     fields:
       - label: "Contact source"
         name: "contact_source"
@@ -63,6 +65,7 @@ collections:
       - label: "Logo"
         name: "logo"
         widget: "image"
+        choose_url: false
 
       - label: "Link"
         name: "link"
@@ -72,7 +75,7 @@ collections:
     label: "Skills"
     folder: "src/decap-content/skills"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{type}}-{{skill}}"
     fields:
       - name: "skill"
         label: "Skill"
@@ -80,21 +83,30 @@ collections:
 
       - name: "type"
         label: "Type - (FE/BE/Tools)"
-        widget: "string"
+        widget: "select"
+        options:
+          - { label: "Frontend", value: "FE" }
+          - { label: "Backend", value: "BE" }
+          - { label: "Tools", value: "O" }
 
       - name: "level"
         label: "Skill level - (Beginner/Intermediate/Expert)"
-        widget: "string"
+        widget: "select"
+        options:
+          - { label: "Beginner", value: "beginner" }
+          - { label: "Intermediate", value: "intermediate" }
+          - { label: "Expert", value: "expert" }
 
       - name: "logo"
         label: "Tech Logo"
-        widget: "string"
+        widget: "image"
+        choose_url: false
 
   - name: "experience"
     label: "Experience"
     folder: "src/decap-content/experience"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{company}}"
     fields:
       - name: "company"
         label: "Company name"
@@ -103,10 +115,14 @@ collections:
       - name: "from"
         label: "Start date"
         widget: "datetime"
+        date_format: "MM.YYYY"
+        time_format: false
 
       - name: "to"
         label: "End date"
         widget: "datetime"
+        date_format: "MM.YYYY"
+        time_format: false
 
       - name: "work_summary"
         label: "Work summary"
@@ -116,13 +132,14 @@ collections:
 
       - name: "logo"
         label: "Company Logo"
-        widget: "string"
+        widget: "image"
+        choose_url: false
 
   - name: "projects"
     label: "Projects"
     folder: "src/decap-content/projects"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{project}}"
     fields:
       - name: "project"
         label: "Project name"
@@ -131,6 +148,8 @@ collections:
       - name: "date_released"
         label: "Date released"
         widget: "datetime"
+        date_format: "MM.YYYY"
+        time_format: false
 
       - name: "project_summary"
         label: "Project summary"
@@ -141,6 +160,8 @@ collections:
       - name: "project_image"
         label: "Project preview image"
         widget: "image"
+        choose_url: false
+        required: false
 
       - name: "project_links"
         label: "Project links"

@@ -8,5 +8,5 @@ skills:
   - Next.js
   - TypeScript
   - Node.js
-logo: https://res.cloudinary.com/dsdcxatjh/image/upload/f_auto,q_auto/v1753892896/Logo_vlwrsx.png
+logo: https://res.cloudinary.com/dsdcxatjh/image/upload/f_auto,q_auto/v1754243935/website_logo_jyahda.png
 ---
