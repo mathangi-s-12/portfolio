@@ -112,6 +112,10 @@ collections:
         label: "Company name"
         widget: "string"
 
+      - name: "role"
+        label: "Role"
+        widget: "string"
+
       - name: "from"
         label: "Start date"
         widget: "datetime"
@@ -166,7 +170,7 @@ collections:
       - name: "project_links"
         label: "Project links"
         widget: "list"
-        allow_add: true
+        allow_add: false
         fields:
           - name: "github_link"
             label: "Github link"
