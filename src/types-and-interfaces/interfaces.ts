@@ -41,7 +41,7 @@ export interface About {
   title: string;
   role: string;
   about: string;
-  skills: string;
+  skills: string[];
   logo: string;
 }
 
