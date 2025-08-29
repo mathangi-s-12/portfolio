@@ -15,4 +15,12 @@ const ContentContext = createContext<ContentContextType>({
   data: [],
 });
 
-export { ThemeContext, ContentContext };
+const ThemeContextProvider = ThemeContext.Provider;
+const ContentContextProvider = ContentContext.Provider;
+
+export {
+  ThemeContext,
+  ContentContext,
+  ThemeContextProvider,
+  ContentContextProvider,
+};
