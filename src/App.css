@@ -1,44 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wdth,wght@0,6..12,87.5,200..1000;1,6..12,87.5,200..1000&display=swap");
 @import "tailwindcss";
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@theme {
+  --angle-0: 0deg;
+  --angle-180: 180deg;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+@theme inline {
+  --color-bg: var(--bg-color, #fff4ea);
+  --color-text: var(--text-color, #333333);
+  --color-card-bg-1: var(--card-bg-color-1, #c96868);
+  --color-card-text-1: var(--card-text-color-1, #fff);
+  --color-card-bg-2: var(--card-bg-color-2, #7eacb5);
+  --color-card-text-2: var(--card-text-color-2, #fff);
+  --color-card-bg-3: var(--card-bg-color-3, #fadfa1);
+  --color-card-text-3: var(--card-text-color-3, #333333);
+
+  --bg-sunrise-gradient: var(
+    --sunrise-gradient,
+    linear-gradient(#c96868, #fadfa1, #fff4ea)
+  );
+  --bg-sunset-gradient: var(
+    --sunset-gradient,
+    linear-gradient(#1b1a55, #535c91, #9290c3)
+  );
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+:root {
+  --sunrise-gradient: linear-gradient(#c96868, #ff9a8b, #fadfa1);
+  --sunset-gradient: linear-gradient(#1b1a55, #535c91, #9290c3);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.light {
+  --bg-color: #fff4ea;
+  --text-color: #333333;
+  --card-bg-color-1: #c96868;
+  --card-text-color-1: #fff;
+  --card-bg-color-2: #7eacb5;
+  --card-text-color-2: #fff;
+  --card-bg-color-3: #fadfa1;
+  --card-text-color-3: #333333;
 }
 
-.card {
-  padding: 2em;
+.dark {
+  --bg-color: #070f2b;
+  --text-color: #fff;
+  --card-bg-color-1: #9290c3;
+  --card-text-color-1: #fff;
+  --card-bg-color-2: #535c91;
+  --card-text-color-2: #fff;
+  --card-bg-color-3: #1b1a55;
+  --card-text-color-3: #fff;
 }
 
-.read-the-docs {
-  color: #888;
+* {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
 }
