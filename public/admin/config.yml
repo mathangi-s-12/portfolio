@@ -3,9 +3,9 @@ backend:
   repo: mathangi-s-12/portfolio
   branch: add-decap
 
-# local_backend: true
+local_backend: true
 
-publish_mode: editorial_workflow
+# publish_mode: editorial_workflow
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
@@ -69,7 +69,24 @@ collections:
 
       - label: "Link"
         name: "link"
+        required: false
         widget: "string"
+
+      - label: "Type"
+        name: "type"
+        widget: "select"
+        options:
+          - { label: "Email", value: "email" }
+          - { label: "Social", value: "social" }
+          - { label: "Other", value: "other" }
+          - { label: "File", value: "file" }
+
+      - label: "File"
+        name: "file"
+        widget: "file"
+        choose_url: false
+        required: false
+        hint: "Upload your file here if type is 'File'"
 
   - name: "skills"
     label: "Skills"
