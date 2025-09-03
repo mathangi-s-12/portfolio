@@ -6,6 +6,7 @@
   overflow: hidden;
   border-radius: 16.8em;
   transition: background-image 5s ease-in-out;
+  cursor: pointer;
 }
 
 .spinner {

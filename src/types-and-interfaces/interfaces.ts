@@ -10,6 +10,8 @@ export interface Contact {
   contact_source: string;
   logo: string;
   link: string;
+  type: string;
+  file: string;
 }
 
 export interface Experience {
