@@ -24,8 +24,8 @@ const AboutSection = () => {
   ) as unknown as Contact[];
 
   return (
-    <div className="bg-bg p-[3rem] flex flex-col h-fit" id="about">
-      <div className="flex items-center justify-around text-text">
+    <div className="bg-bg py-[4rem] px-[8rem] flex flex-col h-fit" id="about">
+      <div className="flex items-center justify-between text-text">
         <div className="left flex flex-col gap-4 h-fit">
           <h1 className="text-5xl font-bold text-card-bg-1">
             {aboutData.title}

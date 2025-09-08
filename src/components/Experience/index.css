@@ -1,0 +1,40 @@
+#experience {
+  .company-details {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    .company-details-card {
+      ul {
+        list-style-type: disc;
+        padding-left: 1.5rem;
+        li {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .company-details::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  .company-logo-card {
+    animation: disappear linear forwards;
+    animation-range: exit exit;
+  }
+
+  .company-logo-card:last-of-type {
+    animation: none;
+  }
+}
+
+@keyframes disappear {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 100% 0);
+  }
+}
