@@ -4,15 +4,17 @@ import Markdown from "react-markdown";
 // Contexts
 import { ContentContext } from "@src/contexts";
 import { getTopicData } from "@src/utils";
+// Types
+import type { Experience } from "@src/types-and-interfaces/interfaces";
 // Styles
 import "./index.css";
 
-const Experience = () => {
+const ExperienceSection = () => {
   const { data } = useContext(ContentContext);
   const unsortedExperienceData = getTopicData(
     "decap-content/experience/",
     data
-  );
+  ) as unknown as Experience[];
   const experienceData = unsortedExperienceData.sort((a, b) => {
     const aFromDate = a.from.split(".").reverse().join("-");
     const bFromDate = b.from.split(".").reverse().join("-");
@@ -107,4 +109,4 @@ const Experience = () => {
   );
 };
 
-export default Experience;
+export default ExperienceSection;
