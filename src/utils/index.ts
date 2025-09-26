@@ -7,4 +7,8 @@ const getTopicData = (topic: string, data: FileContent[]) => {
   return topicData;
 };
 
-export { getTopicData };
+const capitalize = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
+export { getTopicData, capitalize };

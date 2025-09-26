@@ -34,8 +34,8 @@ export interface Project {
 
 export interface Skill {
   skill: string;
-  type: string;
-  level: string;
+  type: "BE" | "FE" | "O";
+  level: "beginner" | "intermediate" | "expert";
   logo: string;
 }
 
