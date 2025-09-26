@@ -3,9 +3,9 @@ backend:
   repo: mathangi-s-12/portfolio
   branch: add-decap
 
-local_backend: true
+# local_backend: true
 
-# publish_mode: editorial_workflow
+publish_mode: editorial_workflow
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
@@ -114,10 +114,30 @@ collections:
           - { label: "Intermediate", value: "intermediate" }
           - { label: "Expert", value: "expert" }
 
+      - name: "years_of_experience"
+        label: "Years of experience"
+        widget: "number"
+        value_type: "float"
+        min: 0
+        max: 20
+        step: 0.5
+
       - name: "logo"
         label: "Tech Logo"
         widget: "image"
         choose_url: false
+
+      - name: "logo_dark"
+        label: "Tech Logo - Dark mode"
+        widget: "image"
+        choose_url: false
+        required: false
+
+      - name: "logo_with_text"
+        label: "Does logo have text?"
+        widget: "boolean"
+        default: false
+        required: false
 
   - name: "experience"
     label: "Experience"
