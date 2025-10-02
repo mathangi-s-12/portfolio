@@ -9,6 +9,14 @@ import type { Experience } from "@src/types-and-interfaces/interfaces";
 // Styles
 import "./index.css";
 
+const textColorsArray = [
+  "text-card-text-3",
+  "text-card-text-2",
+  "text-card-text-1",
+];
+
+const bgColorsArray = ["bg-card-bg-3", "bg-card-bg-2", "bg-card-bg-1"];
+
 const ExperienceSection = () => {
   const { data } = useContext(ContentContext);
   const unsortedExperienceData = getTopicData(
@@ -48,8 +56,7 @@ const ExperienceSection = () => {
         </h1>
         {experienceData.map(
           ({ company, role, from, to, work_summary }, idx) => {
-            const indexMod3 = (idx % 3) + 1;
-            const reverseIndexMod3 = 4 - indexMod3;
+            const indexMod3 = idx % 3;
 
             const fromDate = from.split(".").reverse().join("-");
             const toDate = to.split(".").reverse().join("-");
@@ -66,7 +73,7 @@ const ExperienceSection = () => {
             return (
               <div
                 key={company}
-                className={`company-details-card flex flex-col gap-2 text-card-text-${reverseIndexMod3} mb-[12rem]`}
+                className={`company-details-card flex flex-col gap-2 ${textColorsArray[indexMod3]} mb-[12rem]`}
                 style={{ viewTimeline: timelineScopes[idx] }}
               >
                 <div className="text-xl font-bold">
@@ -85,16 +92,16 @@ const ExperienceSection = () => {
       </div>
       <div className="relative h-[15rem] w-[15rem] flex items-center justify-center">
         {experienceData.map(({ logo, company }, idx) => {
-          const indexMod3 = (idx % 3) + 1;
-          const reverseIndexMod3 = 4 - indexMod3;
+          const indexMod3 = idx % 3;
 
           return (
             <div
               key={company}
-              className={`company-logo-card h-[15rem] w-[15rem] min-w-[15rem] p-[1rem] rounded-[0.5rem] flex items-center justify-center bg-card-bg-${reverseIndexMod3} z-${
-                experienceData.length - idx
-              } absolute left-0 top-0`}
-              style={{ animationTimeline: timelineScopes[idx] }}
+              className={`company-logo-card h-[15rem] w-[15rem] min-w-[15rem] p-[1rem] rounded-[0.5rem] flex items-center justify-center ${bgColorsArray[indexMod3]} absolute left-0 top-0`}
+              style={{
+                animationTimeline: timelineScopes[idx],
+                zIndex: experienceData.length - idx,
+              }}
             >
               <img
                 className="company-logo-image max-h-[100%]"
