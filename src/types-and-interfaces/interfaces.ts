@@ -36,7 +36,10 @@ export interface Skill {
   skill: string;
   type: "BE" | "FE" | "O";
   level: "beginner" | "intermediate" | "expert";
+  years_of_experience: number;
   logo: string;
+  logo_dark: string;
+  logo_with_text: boolean;
 }
 
 export interface About {

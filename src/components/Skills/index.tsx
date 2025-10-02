@@ -1,7 +1,7 @@
 // Libs
 import { useContext } from "react";
 // Contexts
-import { ContentContext } from "@src/contexts";
+import { ContentContext, ThemeContext } from "@src/contexts";
 import { getTopicData } from "@src/utils";
 // Types
 import type { Skill } from "@src/types-and-interfaces/interfaces";
@@ -12,17 +12,17 @@ import { capitalize } from "@src/utils";
 
 const Skills = () => {
   const { data } = useContext(ContentContext);
+  const { theme } = useContext(ThemeContext);
   const skillsData = getTopicData(
     "decap-content/skills/",
     data
   ) as unknown as Skill[];
 
   const convertToHighchartsDataPoints = (skills: Skill[]) => {
-    const y = 5; // Fixed width for all points
     const skillLevelZAxisMap = {
-      beginner: 6,
-      intermediate: 9,
-      expert: 12,
+      beginner: 7,
+      intermediate: 8,
+      expert: 10,
     }; // Radius of individual points based on skill level
     const skillLevelColorMap = {
       beginner: "var(--card-bg-color-3)",
@@ -32,11 +32,21 @@ const Skills = () => {
 
     const dataPoints = skills.map((skill) => ({
       name: skill.skill,
-      y,
+      y: skill.years_of_experience,
       z: skillLevelZAxisMap[skill.level],
       color: skillLevelColorMap[skill.level],
-      custom: { logo: skill.logo, years: y, level: capitalize(skill.level) },
+      custom: {
+        logo:
+          theme === "dark" && skill.logo_dark ? skill.logo_dark : skill.logo,
+        years: skill.years_of_experience,
+        level: capitalize(skill.level),
+        logoWidth: skill.logo_with_text ? "40px" : "30px",
+      },
     }));
+
+    dataPoints.sort(({ z: zA }, { z: zB }) => {
+      return zA - zB;
+    });
 
     return dataPoints;
   };
@@ -50,10 +60,27 @@ const Skills = () => {
   const otherDataPoints = convertToHighchartsDataPoints(otherSkills);
 
   return (
-    <div id="skills" className="h-fit bg-bg py-[4rem] px-[8rem] w-full">
-      <h1 className="text-2xl font-bold text-card-bg-1 mb-[5rem]">
+    <div
+      id="skills"
+      className="h-fit w-full bg-bg py-[4rem] px-[8rem] flex flex-col text-text"
+    >
+      <h1 className="text-2xl font-bold text-card-bg-1 mb-[4rem]">
         Skill Tree Progress: Frontend Maxed, Backend Leveling Up
       </h1>
+      <div className="flex items-center gap-3 self-center-safe mb-[3rem]">
+        <span className="flex items-center gap-2">
+          <span className="bg-card-bg-1 h-[8px] w-[8px] rounded-full" />
+          Expert
+        </span>
+        <span className="flex items-center gap-2">
+          <span className="bg-card-bg-2 h-[8px] w-[8px] rounded-full" />
+          Intermediate
+        </span>
+        <span className="flex items-center gap-2">
+          <span className="bg-card-bg-3 h-[8px] w-[8px] rounded-full" />
+          Beginner
+        </span>
+      </div>
       <div className="grid grid-cols-2 gap-[4rem]">
         <div className="w-full">
           <SkillChart title="Frontend Skills" data={frontendDataPoints} />
