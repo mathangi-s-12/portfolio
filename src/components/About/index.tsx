@@ -52,7 +52,7 @@ const AboutSection = () => {
                     className="bg-card-bg-1 p-[0.5rem] rounded-full h-[3rem] w-[3rem] flex items-center justify-center"
                   >
                     <img
-                      className="max-w-[1.8rem]"
+                      className="max-h-[1.3rem]"
                       src={logo}
                       alt={contact_source}
                     />

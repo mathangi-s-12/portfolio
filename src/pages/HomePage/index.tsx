@@ -1,10 +1,12 @@
+// Custom hooks
 import useGetDecapContent from "@src/custom-hooks/useGetDecapContent";
-
+// Context
 import { ContentContextProvider } from "@src/contexts";
-
+// Components
 import About from "@src/components/About";
 import Skills from "@src/components/Skills";
 import Experience from "@src/components/Experience";
+import ContactForm from "@src/components/ContactForm";
 
 export default function HomePage() {
   const { loading, data } = useGetDecapContent();
@@ -18,6 +20,7 @@ export default function HomePage() {
       <About />
       <Skills />
       <Experience />
+      <ContactForm />
     </ContentContextProvider>
   );
 }

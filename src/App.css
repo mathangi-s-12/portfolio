@@ -55,6 +55,9 @@
 
 * {
   font-family: "Nunito Sans", sans-serif;
+
+  scrollbar-color: var(--card-text-color-3) transparent;
+  scrollbar-width: thin;
 }
 
 body {
