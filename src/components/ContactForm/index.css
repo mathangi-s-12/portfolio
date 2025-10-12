@@ -31,3 +31,23 @@
   line-height: 41px;
   padding: 8px 10px;
 }
+
+.message-box-error {
+  /* Horizontal rule for textarea */
+  background-attachment: local;
+  background-image: linear-gradient(
+      to right,
+      transparent 10px,
+      transparent 10px
+    ),
+    linear-gradient(to left, transparent 10px, transparent 10px),
+    repeating-linear-gradient(
+      transparent,
+      transparent 40px,
+      var(--color-red-500) 40px,
+      var(--color-red-500) 41px,
+      transparent 41px
+    );
+  line-height: 41px;
+  padding: 8px 10px;
+}

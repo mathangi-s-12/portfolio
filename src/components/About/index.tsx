@@ -49,7 +49,7 @@ const AboutSection = () => {
                     target="_blank"
                     rel="noreferrer noopener"
                     key={contact_source}
-                    className="bg-card-bg-1 p-[0.5rem] rounded-full h-[3rem] w-[3rem] flex items-center justify-center"
+                    className="bg-card-bg-1 p-[0.5rem] rounded-full h-[3rem] w-[3rem] flex items-center justify-center hover:scale-105 transition-transform"
                   >
                     <img
                       className="max-h-[1.3rem]"
