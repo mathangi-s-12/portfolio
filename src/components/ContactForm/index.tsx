@@ -2,7 +2,8 @@
 import { useContext, useState } from "react";
 // Contexts
 import { ContentContext } from "@src/contexts";
-import { getTopicData } from "@src/utils";
+// Utils
+import { getTopicData, encode } from "@src/utils";
 // Types
 import type { Contact } from "@src/types-and-interfaces/interfaces";
 // Styles
@@ -14,6 +15,7 @@ const ContactForm = () => {
     email: "",
     subject: "",
     message: "",
+    "bot-field": "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -75,7 +77,14 @@ const ContactForm = () => {
       return;
     }
 
-    // Write submission logic here
+    // Netlify submission logic here
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "portfolio-contact", ...formValues }),
+    })
+      .then(() => {})
+      .catch(() => {});
   };
 
   return (
@@ -122,11 +131,23 @@ const ContactForm = () => {
       <form
         name="portfolio-contact"
         data-netlify="true"
+        data-netlify-honeypot="bot-field"
         method="POST"
         onSubmit={handleSubmit}
         className="bg-card-bg-3 text-card-text-3 p-10 h-full w-[60%] rounded-md overflow-auto flex flex-col gap-5 relative"
       >
         <p className="font-bold">Hey Mathangi!</p>
+        {/* Honeypot field (hidden from users) */}
+        <p className="hidden">
+          <label>
+            Don’t fill this out if you’re human:
+            <input
+              name="bot-field"
+              value={formValues["bot-field"]}
+              onChange={handleChange}
+            />
+          </label>
+        </p>
         <p className="w-full flex gap-[5px]">
           This is regarding
           <input

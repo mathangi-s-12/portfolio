@@ -11,4 +11,15 @@ const capitalize = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-export { getTopicData, capitalize };
+const encode = (data: {
+  [key: string]: string | number | boolean | null | undefined;
+}): string => {
+  return Object.keys(data)
+    .map(
+      (key) =>
+        encodeURIComponent(key) + "=" + encodeURIComponent(data[key] as string)
+    )
+    .join("&");
+};
+
+export { getTopicData, capitalize, encode };
