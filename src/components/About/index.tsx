@@ -24,7 +24,10 @@ const AboutSection = () => {
   ) as unknown as Contact[];
 
   return (
-    <div className="bg-bg py-[4rem] px-[8rem] flex flex-col h-fit" id="about">
+    <div
+      id="about"
+      className="bg-bg mt-[68px] py-[4rem] px-[8rem] flex flex-col h-fit"
+    >
       <div className="flex items-center justify-between text-text">
         <div className="left flex flex-col gap-4 h-fit">
           <h1 className="text-5xl font-bold text-card-bg-1">

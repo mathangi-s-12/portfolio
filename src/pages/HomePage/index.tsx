@@ -6,6 +6,7 @@ import { ContentContextProvider } from "@src/contexts";
 import About from "@src/components/About";
 import Skills from "@src/components/Skills";
 import Experience from "@src/components/Experience";
+import Header from "@src/components/Header";
 import ContactForm from "@src/components/ContactForm";
 
 export default function HomePage() {
@@ -17,6 +18,7 @@ export default function HomePage() {
 
   return (
     <ContentContextProvider value={{ loading, data }}>
+      <Header />
       <About />
       <Skills />
       <Experience />

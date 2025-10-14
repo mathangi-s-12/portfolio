@@ -65,7 +65,7 @@ const Skills = () => {
       className="h-fit w-full bg-bg py-[4rem] px-[8rem] flex flex-col text-text"
     >
       <h1 className="text-2xl font-bold text-card-bg-1 mb-[4rem]">
-        Skill Tree Progress: Frontend Maxed, Backend Leveling Up
+        Skill tree progress: Frontend maxed, Backend leveling up
       </h1>
       <div className="flex items-center gap-3 self-center-safe mb-[3rem]">
         <span className="flex items-center gap-2">
