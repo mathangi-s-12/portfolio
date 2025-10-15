@@ -3,22 +3,41 @@ import { useEffect, useRef, useState } from "react";
 const Header = () => {
   const headerRef = useRef<HTMLElement | null>(null);
   const [active, setActive] = useState<string>("about");
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef<number>(0);
+  const ticking = useRef<boolean>(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (headerRef.current) {
-        if (window.scrollY > 60) {
-          headerRef.current.classList.add("shadow-md", "bg-bg/60");
-        } else {
-          headerRef.current.classList.remove("shadow-md", "bg-bg/60");
-        }
+    const onScroll = () => {
+      const currentY = window.scrollY;
+
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => {
+          // hide when scrolling down and past a small threshold
+          if (currentY > lastScrollY.current && currentY > 80) {
+            setHidden(true);
+          } else {
+            setHidden(false);
+          }
+
+          if (headerRef.current) {
+            if (currentY > 60) {
+              headerRef.current.classList.add("shadow-md", "bg-bg/60");
+            } else {
+              headerRef.current.classList.remove("shadow-md", "bg-bg/60");
+            }
+          }
+
+          lastScrollY.current = currentY;
+          ticking.current = false;
+        });
+        ticking.current = true;
       }
     };
-    window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -43,7 +62,7 @@ const Header = () => {
           }
         });
       },
-      { root: null, rootMargin: "0px 0px 0px 0px", threshold: 0.25 }
+      { root: null, rootMargin: "0px 0px 0px 0px", threshold: 0.5 }
     );
 
     sections.forEach((el) => observer.observe(el));
@@ -66,7 +85,9 @@ const Header = () => {
   return (
     <header
       ref={headerRef}
-      className="w-full fixed h-[68px] px-[8rem] flex items-center justify-between bg-bg z-50 top-0 left-0"
+      className={`w-full fixed h-[68px] px-[8rem] flex items-center justify-between bg-bg z-50 top-0 left-0 transform transition-transform duration-300 ${
+        hidden ? "-translate-y-full" : "translate-y-0"
+      }`}
     >
       <div className="h-[40px] w-[40px] max-w-[40px] bg-card-bg-1 text-white rounded-sm flex items-center justify-center">
         MS
