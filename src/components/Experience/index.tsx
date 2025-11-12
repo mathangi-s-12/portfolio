@@ -9,12 +9,6 @@ import type { Experience } from "@src/types-and-interfaces/interfaces";
 // Styles
 import "./index.css";
 
-const textColorsArray = [
-  "text-card-text-3",
-  "text-card-text-2",
-  "text-card-text-1",
-];
-
 const bgColorsArray = ["bg-card-bg-3", "bg-card-bg-2", "bg-card-bg-1"];
 
 const ExperienceSection = () => {
@@ -42,13 +36,13 @@ const ExperienceSection = () => {
   return (
     <div
       id="experience"
-      className="h-dvh bg-bg py-[4rem] px-[8rem] flex items-center justify-between overflow-hidden w-full"
+      className="bg-bg h-dvh w-full overflow-hidden relative"
       style={{
         timelineScope: `${timelineScopes.join(", ")}`,
       }}
     >
       <div
-        className="company-details flex flex-col flex-1 h-full pr-[20rem] overflow-auto"
+        className="company-details py-[4rem] pl-[8rem] pr-[30rem] flex flex-col flex-1 overflow-auto absolute left-0 top-0 h-full h-max-[100%] w-full z-10"
         onScroll={onScrollExperience}
       >
         <h1 className="text-2xl font-bold text-card-bg-1 mb-[4rem]">
@@ -56,8 +50,6 @@ const ExperienceSection = () => {
         </h1>
         {experienceData.map(
           ({ company, role, from, to, work_summary }, idx) => {
-            const indexMod3 = idx % 3;
-
             const fromDate = from.split(".").reverse().join("-");
             const toDate = to.split(".").reverse().join("-");
             const dateOptions = { year: "numeric", month: "short" };
@@ -73,7 +65,7 @@ const ExperienceSection = () => {
             return (
               <div
                 key={company}
-                className={`company-details-card flex flex-col gap-2 ${textColorsArray[indexMod3]} mb-[12rem]`}
+                className="company-details-card flex flex-col gap-2 text-text mb-[12rem]"
                 style={{ viewTimeline: timelineScopes[idx] }}
               >
                 <div className="text-xl font-bold">
@@ -90,7 +82,7 @@ const ExperienceSection = () => {
           }
         )}
       </div>
-      <div className="relative h-[15rem] w-[15rem] flex items-center justify-center">
+      <div className="h-[15rem] w-[15rem] flex items-center justify-center absolute top-[50%] right-[7.5rem] translate-y-[-50%] z-5">
         {experienceData.map(({ logo, company }, idx) => {
           const indexMod3 = idx % 3;
 

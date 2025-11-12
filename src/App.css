@@ -12,7 +12,7 @@
   --color-card-bg-1: var(--card-bg-color-1, #c96868);
   --color-card-text-1: var(--card-text-color-1, #fff);
   --color-card-bg-2: var(--card-bg-color-2, #7eacb5);
-  --color-card-text-2: var(--card-text-color-2, #fff);
+  --color-card-text-2: var(--card-text-color-2, #333333);
   --color-card-bg-3: var(--card-bg-color-3, #fadfa1);
   --color-card-text-3: var(--card-text-color-3, #333333);
 
@@ -35,7 +35,7 @@
   --bg-color: #fff4ea;
   --text-color: #333333;
   --card-bg-color-1: #c96868;
-  --card-text-color-1: #333333;
+  --card-text-color-1: #fff;
   --card-bg-color-2: #7eacb5;
   --card-text-color-2: #333333;
   --card-bg-color-3: #fadfa1;
