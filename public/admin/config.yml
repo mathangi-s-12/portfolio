@@ -207,7 +207,9 @@ collections:
       - name: "project_links"
         label: "Project links"
         widget: "list"
-        allow_add: false
+        allow_add: true
+        min: 0
+        max: 1
         fields:
           - name: "github_link"
             label: "Github link"
@@ -216,6 +218,7 @@ collections:
           - name: "website_link"
             label: "Website link"
             widget: "string"
+            required: false
 
       - name: "project_tech"
         label: "Project tech stack"
