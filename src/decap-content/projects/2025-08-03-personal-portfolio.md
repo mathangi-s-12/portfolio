@@ -11,12 +11,12 @@ project_summary: >-
   Curious about the nuts and bolts? Head over to the GitHub repo and give the README a spin for all the juicy details. And, of course, you’re looking at the live result right now—enjoy the ride!
 project_image: https://res.cloudinary.com/dsdcxatjh/image/upload/f_auto,q_auto/v1754243926/no-image-placeholder_pzxhaq.png
 project_links:
-  - website_link: N/A
+  - website_link: https://mathangi-s-portfolio.netlify.app
     github_link: https://github.com/mathangi-s-12/portfolio
 project_tech:
   - React
+  - Tailwind
   - Decap
-  - D3
   - Netlify
   - Vite
 ---

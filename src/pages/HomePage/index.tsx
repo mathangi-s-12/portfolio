@@ -7,6 +7,7 @@ import About from "@src/components/About";
 import Skills from "@src/components/Skills";
 import Experience from "@src/components/Experience";
 import Header from "@src/components/Header";
+import Projects from "@src/components/Projects";
 import ContactForm from "@src/components/ContactForm";
 
 export default function HomePage() {
@@ -22,6 +23,7 @@ export default function HomePage() {
       <About />
       <Skills />
       <Experience />
+      <Projects />
       <ContactForm />
     </ContentContextProvider>
   );

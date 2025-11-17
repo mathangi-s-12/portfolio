@@ -23,12 +23,21 @@ export interface Experience {
   role: string;
 }
 
+export interface GithubLink {
+  website_link: string;
+}
+
+export interface WebsiteLink {
+  github_link: string;
+}
+
+export type ProjectLink = GithubLink | WebsiteLink;
 export interface Project {
   project: string;
   date_released: string;
   project_summary: string;
   project_image: string;
-  project_links: { [key: string]: string }[];
+  project_links: ProjectLink[];
   project_tech: string[];
 }
 
