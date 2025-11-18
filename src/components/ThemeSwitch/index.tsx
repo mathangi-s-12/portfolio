@@ -19,6 +19,7 @@ const ThemeSwitch = () => {
       onClick={() => {
         toggleTheme();
       }}
+      title={`Click to switch to ${isThemeDark ? "light" : "dark"} mode`}
     >
       <div className="glow" />
       {isThemeDark ? <div className="stars" /> : null}

@@ -10,7 +10,7 @@ import type { Theme } from "./types-and-interfaces/types";
 import "./App.css";
 
 function App() {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
     if (theme === "light") {
