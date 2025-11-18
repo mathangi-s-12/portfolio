@@ -1,5 +1,6 @@
 // Libs
 import { useContext } from "react";
+import Markdown from "react-markdown";
 // Contexts
 import { ContentContext } from "@src/contexts";
 import { getTopicData } from "@src/utils";
@@ -22,15 +23,6 @@ const Projects = () => {
     "decap-content/projects/",
     data
   ) as unknown as Project[];
-
-  projectData.push({
-    project: "More projects soon...",
-    date_released: "",
-    project_summary: "",
-    project_image: "",
-    project_links: [],
-    project_tech: [],
-  });
 
   return (
     <div
@@ -60,6 +52,11 @@ const Projects = () => {
         ) => {
           const indexMod3 = idx % 3;
           const indexPlus2Mod3 = (idx + 2) % 3;
+          const yearAndMonth = date_released ? date_released.split(".") : "";
+          const dateString = new Date(
+            parseInt(yearAndMonth[1]),
+            parseInt(yearAndMonth[0]) - 1
+          ).toLocaleDateString("en-US", { year: "numeric", month: "long" });
 
           return (
             <div
@@ -73,7 +70,7 @@ const Projects = () => {
               }
             >
               {project_image ? (
-                <div className="min-w-[25%] flex items-center justify-center">
+                <div className="min-w-[25%] max-w-[25%] flex items-center justify-center">
                   <img src={project_image} alt={`${project}_image`} />
                 </div>
               ) : null}
@@ -82,10 +79,10 @@ const Projects = () => {
                 {project ? (
                   <h2 className="text-xl font-semibold">{project}</h2>
                 ) : null}
-                {date_released ? <div>{date_released}</div> : null}
+                {date_released ? <div>{dateString}</div> : null}
                 {project_summary ? (
                   <div className="flex-1 h-fit overflow-auto">
-                    {project_summary}
+                    <Markdown>{project_summary}</Markdown>
                   </div>
                 ) : null}
                 {project_links.length ? (
