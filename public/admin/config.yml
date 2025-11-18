@@ -1,0 +1,227 @@
+backend:
+  name: github
+  repo: mathangi-s-12/portfolio
+  branch: add-decap
+
+# local_backend: true
+
+publish_mode: editorial_workflow
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+media_library:
+  name: cloudinary
+  config:
+    multiple: false
+    cloud_name: dsdcxatjh
+    api_key: 427789495887798
+    folder: { folder: { path: "personal_portfolio" } }
+    default_transformations:
+      - - fetch_format: auto
+          quality: auto
+
+collections:
+  - name: "overview"
+    label: "Overview"
+    files:
+      - name: "about"
+        label: "About"
+        file: "src/decap-content/about/about.md"
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+
+          - label: "Role"
+            name: "role"
+            widget: "string"
+
+          - label: "About"
+            name: "about"
+            widget: "string"
+
+          - label: "Skills"
+            name: "skills"
+            widget: "list"
+            field: { name: "tech", label: "Tech", widget: "string" }
+
+          - label: "Website Logo"
+            name: "logo"
+            widget: "image"
+            allow_multiple: false
+            choose_url: false
+
+  - name: "contact_links"
+    label: "Contact links"
+    folder: "src/decap-content/contact-info"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{contact_source}}"
+    fields:
+      - label: "Contact source"
+        name: "contact_source"
+        widget: "string"
+
+      - label: "Logo"
+        name: "logo"
+        widget: "image"
+        choose_url: false
+
+      - label: "Link"
+        name: "link"
+        required: false
+        widget: "string"
+
+      - label: "Type"
+        name: "type"
+        widget: "select"
+        options:
+          - { label: "Email", value: "email" }
+          - { label: "Social", value: "social" }
+          - { label: "Other", value: "other" }
+          - { label: "File", value: "file" }
+
+      - label: "File"
+        name: "file"
+        widget: "file"
+        choose_url: false
+        required: false
+        hint: "Upload your file here if type is 'File'"
+
+  - name: "skills"
+    label: "Skills"
+    folder: "src/decap-content/skills"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{type}}-{{skill}}"
+    fields:
+      - name: "skill"
+        label: "Skill"
+        widget: "string"
+
+      - name: "type"
+        label: "Type - (FE/BE/Tools)"
+        widget: "select"
+        options:
+          - { label: "Frontend", value: "FE" }
+          - { label: "Backend", value: "BE" }
+          - { label: "Tools", value: "O" }
+
+      - name: "level"
+        label: "Skill level - (Beginner/Intermediate/Expert)"
+        widget: "select"
+        options:
+          - { label: "Beginner", value: "beginner" }
+          - { label: "Intermediate", value: "intermediate" }
+          - { label: "Expert", value: "expert" }
+
+      - name: "years_of_experience"
+        label: "Years of experience"
+        widget: "number"
+        value_type: "float"
+        min: 0
+        max: 20
+        step: 0.5
+
+      - name: "logo"
+        label: "Tech Logo"
+        widget: "image"
+        choose_url: false
+
+      - name: "logo_dark"
+        label: "Tech Logo - Dark mode"
+        widget: "image"
+        choose_url: false
+        required: false
+
+      - name: "logo_with_text"
+        label: "Does logo have text?"
+        widget: "boolean"
+        default: false
+        required: false
+
+  - name: "experience"
+    label: "Experience"
+    folder: "src/decap-content/experience"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{company}}"
+    fields:
+      - name: "company"
+        label: "Company name"
+        widget: "string"
+
+      - name: "role"
+        label: "Role"
+        widget: "string"
+
+      - name: "from"
+        label: "Start date"
+        widget: "datetime"
+        date_format: "MM.YYYY"
+        time_format: false
+
+      - name: "to"
+        label: "End date"
+        widget: "datetime"
+        date_format: "MM.YYYY"
+        time_format: false
+
+      - name: "work_summary"
+        label: "Work summary"
+        widget: "markdown"
+        sanitize_preview: true
+        modes: ["rich_text"]
+
+      - name: "logo"
+        label: "Company Logo"
+        widget: "image"
+        choose_url: false
+
+  - name: "projects"
+    label: "Projects"
+    folder: "src/decap-content/projects"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{project}}"
+    fields:
+      - name: "project"
+        label: "Project name"
+        widget: "string"
+
+      - name: "date_released"
+        label: "Date released"
+        widget: "datetime"
+        date_format: "MM.YYYY"
+        time_format: false
+
+      - name: "project_summary"
+        label: "Project summary"
+        widget: "markdown"
+        sanitize_preview: true
+        modes: ["rich_text"]
+
+      - name: "project_image"
+        label: "Project preview image"
+        widget: "image"
+        choose_url: false
+        required: false
+
+      - name: "project_links"
+        label: "Project links"
+        widget: "list"
+        allow_add: true
+        min: 0
+        max: 1
+        fields:
+          - name: "github_link"
+            label: "Github link"
+            widget: "string"
+
+          - name: "website_link"
+            label: "Website link"
+            widget: "string"
+            required: false
+
+      - name: "project_tech"
+        label: "Project tech stack"
+        widget: "list"
+        allow_add: true
+        field: { name: "tech", label: "Tech", widget: "string" }

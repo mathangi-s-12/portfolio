@@ -1,0 +1,53 @@
+.message-box::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+.message-box::-webkit-scrollbar-thumb {
+  background: var(--card-text-color-3);
+  opacity: 0.5;
+  border-radius: 8px;
+}
+
+.message-box {
+  scrollbar-width: thin;
+  scrollbar-color: var(--card-text-color-3) transparent;
+
+  /* Horizontal rule for textarea */
+  background-attachment: local;
+  background-image: linear-gradient(
+      to right,
+      transparent 10px,
+      transparent 10px
+    ),
+    linear-gradient(to left, transparent 10px, transparent 10px),
+    repeating-linear-gradient(
+      transparent,
+      transparent 40px,
+      var(--card-text-color-3) 40px,
+      var(--card-text-color-3) 41px,
+      transparent 41px
+    );
+  line-height: 41px;
+  padding: 8px 10px;
+}
+
+.message-box-error {
+  /* Horizontal rule for textarea */
+  background-attachment: local;
+  background-image: linear-gradient(
+      to right,
+      transparent 10px,
+      transparent 10px
+    ),
+    linear-gradient(to left, transparent 10px, transparent 10px),
+    repeating-linear-gradient(
+      transparent,
+      transparent 40px,
+      var(--color-red-500) 40px,
+      var(--color-red-500) 41px,
+      transparent 41px
+    );
+  line-height: 41px;
+  padding: 8px 10px;
+}
