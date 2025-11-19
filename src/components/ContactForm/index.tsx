@@ -83,8 +83,12 @@ const ContactForm = () => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "portfolio-contact", ...formValues }),
     })
-      .then(() => {})
-      .catch(() => {});
+      .then(() => {
+        alert("Message sent! I'll get back to you soon.");
+      })
+      .catch(() => {
+        alert("Error sending message. Please try again later.");
+      });
   };
 
   return (

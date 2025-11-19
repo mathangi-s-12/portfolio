@@ -8,6 +8,19 @@
   </head>
   <body>
     <div id="root"></div>
+    <form
+      name="portfolio-contact"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      method="POST"
+      hidden
+    >
+      <input name="bot-field" type="text" hidden />
+      <input type="text" name="subject" />
+      <textarea name="message"></textarea>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+    </form>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
